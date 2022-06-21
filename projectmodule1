@@ -1,0 +1,478 @@
+listKaryawan = [
+    {
+        "NIK": "100201",
+        "Nama Karyawan": "Kevin Stratvert",
+        "Gender": "M",
+        "Department": "Production",
+        "Jabatan": "Dept. Head"
+    },
+    {
+        "NIK": "170785",
+        "Nama Karyawan": "Tamara Coglitore",
+        "Gender": "F",
+        "Department": "R & D",
+        "Jabatan": "Chief\t"
+    },
+    {
+        "NIK": "160908",
+        "Nama Karyawan": "Faykel Nicandro",
+        "Gender": "M",
+        "Department": "Engineering",
+        "Jabatan": "Sr. Engineer"
+    }
+]
+
+
+# Function untuk print list data karyawan
+def tampilkanData(dataKaryawan):
+    print("\n\t--------------- Daftar Karyawan PT Pie in the Sky ---------------\n")
+    print("\t| NIK\t| Nama Karyawan\t\t| Gender | Department\t| Jabatan\t|")
+    for i in range(len(dataKaryawan)) :
+            print(f'\t| {dataKaryawan[i]["NIK"]}| {dataKaryawan[i]["Nama Karyawan"]}\t| {dataKaryawan[i]["Gender"]}\t | {dataKaryawan[i]["Department"]}\t| {dataKaryawan[i]["Jabatan"]}\t|')
+
+# Function untuk konfirmasi exit di read menu
+def exitReadConf():
+    exitConf = input("\n\tKeluar dari Read Menu? (yes/no): ").lower()
+    if exitConf == "yes":
+        mainMenu()
+    elif exitConf == "no":
+        read()
+    else:
+        print("""
+        \t\t=================================
+        \t\t  Masukkan pilihan dengan benar
+        \t\t=================================""")
+        read()
+
+# Function untuk konfirmasi exit di add menu
+def exitAddConf():
+    exitConf = input("\n\tKeluar dari Add Menu? (yes/no): ").lower()
+    if exitConf == "yes":
+        mainMenu()
+    elif exitConf == "no":
+        add()
+    else:
+        print("""
+        \t\t=================================
+        \t\t  Masukkan pilihan dengan benar
+        \t\t=================================""")
+        add()
+
+# Function untuk konfirmasi exit di update menu
+def exitUpdateConf():
+    exitConf = input("\n\tKeluar dari Update Menu? (yes/no): ").lower()
+    if exitConf == "yes":
+        mainMenu()
+    elif exitConf == "no":
+        update()
+    else:
+        print("""
+        \t=================================
+        \t  Masukkan pilihan dengan benar
+        \t=================================""")
+        update()
+
+# Function untuk konfirmasi exit di delete menu
+def exitDeleteConf():
+    exitConf = input("\n\tKeluar dari Delete Menu? (yes/no): ").lower()
+    if exitConf == "yes":
+        mainMenu()
+    elif exitConf == "no":
+        delete()
+    else:
+        print("""
+        \t=================================
+        \t  Masukkan pilihan dengan benar
+        \t=================================""")
+        delete()
+
+# Function untuk wrong entry di setiap menu
+def erroneousEntry():
+    print("""
+        \t=================================================
+        \tError entry! Masukkan pilihan angka dengan benar!
+        \t=================================================""")
+
+# Function untuk menu read data
+def read():
+    inputRead = (input("""
+        Menu Database Karyawan Aktif PT Pie in the Sky:
+            1. Lihat list karyawan
+            2. Mencari data karyawan
+            3. Kembali ke menu utama
+        
+        Masukkan angka menu yang diinginkan: """))
+
+    if inputRead == "1":
+        if len(listKaryawan) == 0: # untuk nunjukin list ada isi data/tidak
+            print("""
+            \t\t=================================
+            \t\t         TIDAK ADA DATA
+            \t\t=================================""")
+            read()
+        else:
+            tampilkanData(listKaryawan)
+            read()
+    elif inputRead == "2":
+        if len(listKaryawan) == 0:
+            print("""
+            \t\t=================================
+            \t\t         TIDAK ADA DATA
+            \t\t=================================""")
+            read()
+        else:
+            NIKnum = (input("\n\tMasukkan NIK yang ingin dicari: "))
+            hasilCari=(list(filter(lambda data:data["NIK"] == NIKnum, listKaryawan)))
+            if len(hasilCari):
+                tampilkanData(hasilCari)
+                read()
+            else:
+                print("""
+                \t\t=================================
+                \t\t         TIDAK ADA DATA
+                \t\t=================================""")
+                read()           
+    elif inputRead == "3":
+        exitReadConf()
+    else:
+        erroneousEntry()
+        read()
+
+# Function untuk input NIK karyawan
+def inputAddNIK():
+    while True:
+        addNIK = (input("\n\tMasukkan NIK baru: "))
+        x = addNIK.isnumeric()
+        if x == True:
+            x = addNIK
+            return x
+        else:
+            print("""
+            \t=======================
+            \t  GUNAKAN ANGKA SAJA
+            \t=======================""")
+
+# Function untuk input nama karyawan
+def inputNamaKaryawan():
+    while True:
+        namaKaryawan = input("\tMasukkan Nama Karyawan: ").capitalize()
+        x = namaKaryawan.isnumeric()
+        if x == False:
+            x = namaKaryawan
+            return x
+        else:
+            print("""
+            \t=============================
+            \t  PASTIKAN NAMA SUDAH BENAR
+            \t=============================""")
+
+# Function untuk input gender karyawan
+def inputGenderKaryawan():
+    while True:
+        genderKaryawan = input("\tMasukkan Gender Karyawan (M/F): ").capitalize()
+        x = genderKaryawan.isnumeric()
+        if x == False:
+            x = genderKaryawan
+            return x
+        else:
+            print("""
+            \t=======================
+            \t  GUNAKAN HURUF SAJA
+            \t=======================""")
+
+# Function untuk input department karyawan
+def inputDeptKar():
+    while True:
+        namaDepartment = input("\tMasukkan Nama Department: ").capitalize()
+        x = namaDepartment.isnumeric()
+        if x == False:
+            x = namaDepartment
+            return x
+        else:
+            print("""
+            \t=======================
+            \t  GUNAKAN HURUF SAJA
+            \t=======================""")
+
+# Function untuk input jabatan karyawan
+def inputJabatanKaryawan():
+    while True:
+        jabatanKaryawan = input("\tMasukkan Jabatan Karyawan: ").capitalize()
+        x = jabatanKaryawan.isnumeric()
+        if x == False:
+            x = jabatanKaryawan
+            return x
+        else:
+            print("""
+            \t=======================
+            \t  GUNAKAN HURUF SAJA
+            \t=======================""")
+
+
+# Function untuk menambahkan data di menu add data
+def addKaryawan():
+    addNIK = inputAddNIK()
+    listValue = list(filter(lambda data: data["NIK"] == addNIK, listKaryawan))
+    if len(listValue):
+        tampilkanData(listValue)
+        print("""
+            \t=======================
+            \t     NIK SUDAH ADA
+            \t=======================""")
+        add()
+    else:
+        namaKaryawan = inputNamaKaryawan()
+        genderKaryawan = inputGenderKaryawan()
+        namaDepartment = inputDeptKar()
+        jabatanKaryawan = inputJabatanKaryawan()
+        profileKaryawanBaru=[{
+        "NIK": addNIK,
+        "Nama Karyawan": namaKaryawan,
+        "Gender": genderKaryawan,
+        "Department": namaDepartment,
+        "Jabatan": jabatanKaryawan
+        }]
+        tampilkanData(profileKaryawanBaru)
+        addData = input("\n\tSimpan data karyawan baru? (yes/no): ").lower()
+        if addData == "yes":
+            listKaryawan.extend(profileKaryawanBaru)
+            tampilkanData(listKaryawan)
+            print("""
+            \t\t=========================
+            \t\t   DATA HAS BEEN SAVED
+            \t\t=========================""")
+            add()
+        else:
+            print("""
+            \t\t=========================
+            \t\t   DATA TIDAK DISIMPAN
+            \t\t=========================""")
+            add()
+
+# Function untuk Menu Add Data
+def add():
+    inputAdd = (input("""
+        Menu Tambah Karyawan Baru PT Pie in the Sky:
+            1. Tambah karyawan baru
+            2. Kembali ke menu utama
+        
+        Masukkan angka menu yang diinginkan: """))
+
+    if inputAdd == "1":
+        addKaryawan()
+    elif inputAdd == "2":
+        exitAddConf()
+    else:
+        erroneousEntry()
+        add()
+
+#Function untuk Update Nama Karyawan
+def updateNamaKaryawan(data):
+    gantiNama = inputNamaKaryawan()
+    print("\n\tNIK \t| Nama Karyawan \t| Gender \t| Department \t| Jabatan ")
+    for i in range(len(data)) :
+        print(f'\t{data[i]["NIK"]}\t| {gantiNama}\t| {data[i]["Gender"]}\t| {data[i]["Department"]}\t| {data[i]["Jabatan"]}')
+    checkUpdate = input("\n\tUpdate nama karyawan? (yes/no) : ").lower()
+    if checkUpdate == "yes":
+        data[0]["Nama Karyawan"] = gantiNama
+        tampilkanData(listKaryawan)
+        print('''
+        \t\t==========================
+        \t\t  DATA HAS BEEN UPDATED
+        \t\t==========================''')
+        update()
+    else:
+        update()
+
+#Function untuk Update Gender Karyawan
+def updateGender(data):
+    genBaru = inputGenderKaryawan()
+    print("\n\tNIK \t| Nama Karyawan \t| Gender \t| Department \t| Jabatan ")
+    for i in range(len(data)) :
+        print(f'\t{data[i]["NIK"]}\t| {data[i]["Nama Karyawan"]}\t| {genBaru}\t| {data[i]["Department"]}\t| {data[i]["Jabatan"]}')
+    checkUpdate = input("\n\tUpdate gender karyawan? (yes/no) : ").lower()
+    if checkUpdate == "yes":
+        data[0]["Gender"] = genBaru
+        tampilkanData(listKaryawan)
+        print('''
+        \t\t==========================
+        \t\t  DATA HAS BEEN UPDATED
+        \t\t==========================''')
+        update()
+    else:
+        update()
+
+#Function untuk Update Department Karyawan
+def updateDept(data):
+    deptBaru = inputDeptKar()
+    print("\n\tNIK \t| Nama Karyawan \t| Gender \t| Department \t| Jabatan ")
+    for i in range(len(data)) :
+        print(f'\t{data[i]["NIK"]}\t| {data[i]["Nama Karyawan"]}\t| {data[i]["Gender"]}\t| {deptBaru}\t| {data[i]["Jabatan"]}')
+    checkUpdate = input("\n\tUpdate department? (yes/no) : ").lower()
+    if checkUpdate == "yes":
+        data[0]['Harga'] = deptBaru
+        tampilkanData(listKaryawan)
+        print('''
+        \t\t==========================
+        \t\t  DATA HAS BEEN UPDATED
+        \t\t==========================''')
+        update()
+    else:
+        update()
+
+#Function untuk Update Jabatan Karyawan
+def updateJabatan(data):
+    jabatanBaru = inputJabatanKaryawan()
+    print('\nNomor Data \t| Kode Barang \t| Barang  \t| Stock \t| Harga \t| Warna')
+    for i in range(len(data)) :
+        print(f'\t{data[i]["NIK"]}\t| {data[i]["Nama Karyawan"]}\t| {data[i]["Gender"]}\t| {data[i]["Department"]}\t| {jabatanBaru}')
+    checkUpdate = input("\n\tUpdate jabatan? (yes/no) : ").lower()
+    if checkUpdate == "yes":
+        data[0]['Warna'] = jabatanBaru
+        tampilkanData(listKaryawan)
+        print('''
+        \t\t==========================
+        \t\t  DATA HAS BEEN UPDATED
+        \t\t==========================''')
+        update()
+    else:
+        update()
+
+# Function untuk Menu Update Data
+def update() :
+    inputUpdate = (input("""
+        Menu Memperbarui Data Karyawan PT Pie in the Sky:
+            1. Memperbarui data karyawan
+            2. Kembali ke menu utama
+        
+        Masukkan angka menu yang diinginkan: """))
+
+    if inputUpdate == '1':
+        tampilkanData(listKaryawan)
+        updateNIK = input("\n\tMasukkan NIK yang ingin dicari: ")
+        listValue8 = list(filter(lambda data: data["NIK"] == updateNIK, listKaryawan))
+        if len(listValue8):
+            tampilkanData(listValue8)
+            updateKaryawan = input("\n\tMasukkan kategori data yang ingin diperbarui (Nama/Gender/Department/Jabatan) : ").capitalize()
+            if updateKaryawan == "Nama":
+                updateNamaKaryawan(listValue8)  
+            elif updateKaryawan == "Gender":
+                updateGender(listValue8)
+            elif updateKaryawan == "Department":
+                updateDept(listValue8)
+            elif updateKaryawan == "Jabatan":
+                updateJabatan(listValue8)
+            else:
+                print('''
+                \t=======================================
+                \t         KATEGORI TIDAK ADA!
+                \t   MASUKKAN KATEGORI DENGAN BENAR!
+                \t=======================================''')
+                update()
+        else:
+            print('''
+            \t===============================================
+            \t        DATA YANG ANDA CARI TIDAK ADA
+            \t===============================================''')
+            update()
+    elif inputUpdate == '2':
+        exitUpdateConf()
+    else:
+        erroneousEntry()
+        update()
+
+
+# Function untuk menghapus data di menu delete data
+def delKaryawan(data, NIKaryawan):
+    for i in range(len(data)):
+        if data[i]["NIK"] == NIKaryawan:
+            del data[i]
+            break
+    tampilkanData(data)
+    print('''
+    \t\t\t================================
+    \t\t\t     DATA HAS BEEN DELETED
+    \t\t\t================================''')
+    delete()
+
+# Function untuk menu delete data
+def delete():
+    inputDelete = (input("""
+        Menu Menghapus Karyawan PT Pie in the Sky:
+            1. Hapus karyawan
+            2. Kembali ke menu utama
+        
+        Masukkan angka menu yang diinginkan: """))
+
+    if inputDelete == "1":
+        if len(listKaryawan) == 0:
+            print('''
+            \t==================================
+            \t         DATA TIDAK ADA 
+            \t==================================''')
+            delete()
+        else:
+            tampilkanData(listKaryawan)
+            deleteNIK = (input("\n\tMasukkan NIK karyawan yang ingin dihapus: "))
+            cariData=(list(filter(lambda data:data["NIK"] == deleteNIK, listKaryawan)))
+            if len(cariData):    
+                tampilkanData(cariData)
+                delData =  input("\n\tHapus Data? (Yes/No): ").lower()
+                if delData == "yes":
+                    delKaryawan(listKaryawan, deleteNIK)
+                    delete()
+                elif delData == "no":
+                    print("""
+                    \t===========================
+                    \t    Data tidak dihapus
+                    \t===========================""")
+                    delete()
+                else:
+                    print("""
+                    \t=================================
+                    \t  Masukkan pilihan dengan benar
+                    \t=================================""")
+                    delete()
+            else:
+                print('''
+                \t===============================================
+                \t      DATA YANG ANDA CARI TIDAK DITEMUKAN
+                \t===============================================''')
+                delete()                
+    elif inputDelete == "2":
+        exitDeleteConf()
+    else:
+        erroneousEntry()
+        delete()                
+
+# Function Main Menu     
+def mainMenu():
+    while True:
+        pilihanMenu = (input("""
+        -------- Selamat Datang di PT Pie in the Sky --------
+
+        Menu Utama:
+        1. Database Karyawan Aktif
+        2. Registrasi Karyawan Baru
+        3. Update Informasi Karyawan
+        4. Karyawan Keluar
+        5. Exit Program
+
+        Masukkan angka Menu yang ingin dijalankan : """))
+
+        if(pilihanMenu == "1") :
+            read()
+        elif(pilihanMenu == "2") :
+            add()
+        elif(pilihanMenu == "3") :
+            update()
+        elif(pilihanMenu == "4") :
+            delete()
+        elif(pilihanMenu == "5") :
+            quit()
+        else:
+            erroneousEntry()
+            mainMenu()
+        
+mainMenu()
+    

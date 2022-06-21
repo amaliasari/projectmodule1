@@ -1,4 +1,4 @@
-"""""""""
+""""
 Sari Amalia
 JCDSML 02
 Project Modul 1 : Programming Fundamental
@@ -32,7 +32,7 @@ listKaryawan = [
 
 # Function untuk print list data karyawan
 def tampilkanData(dataKaryawan):
-    print("\n\t--------------- Daftar Karyawan PT Pie in the Sky ---------------\n")
+    print("\n\t--------------- Daftar Karyawan PT The Eye of The Tiger ---------------\n")
     print("\t| NIK\t| Nama Karyawan\t\t| Gender | Department\t| Jabatan\t|")
     for i in range(len(dataKaryawan)) :
             print(f'\t| {dataKaryawan[i]["NIK"]}| {dataKaryawan[i]["Nama Karyawan"]}\t| {dataKaryawan[i]["Gender"]}\t | {dataKaryawan[i]["Department"]}\t| {dataKaryawan[i]["Jabatan"]}\t|')
@@ -103,7 +103,7 @@ def erroneousEntry():
 # Function untuk menu read data
 def read():
     inputRead = (input("""
-        Menu Database Karyawan Aktif PT Pie in the Sky:
+        Menu Database Karyawan Aktif PT The Eye of The Tiger:
             1. Lihat list karyawan
             2. Mencari data karyawan
             3. Kembali ke menu utama
@@ -145,7 +145,7 @@ def read():
         erroneousEntry()
         read()
 
-# Function untuk input NIK karyawan
+# Function untuk input NIK
 def inputAddNIK():
     while True:
         addNIK = (input("\n\tMasukkan NIK baru: "))
@@ -162,7 +162,7 @@ def inputAddNIK():
 # Function untuk input nama karyawan
 def inputNamaKaryawan():
     while True:
-        namaKaryawan = input("\tMasukkan Nama Karyawan: ").capitalize()
+        namaKaryawan = input("\tMasukkan Nama Karyawan: ")
         x = namaKaryawan.isnumeric()
         if x == False:
             x = namaKaryawan
@@ -176,44 +176,44 @@ def inputNamaKaryawan():
 # Function untuk input gender karyawan
 def inputGenderKaryawan():
     while True:
-        genderKaryawan = input("\tMasukkan Gender Karyawan (M/F): ").capitalize()
+        genderKaryawan = input("\tMasukkan Gender Karyawan (M/F): ")
         x = genderKaryawan.isnumeric()
         if x == False:
             x = genderKaryawan
             return x
         else:
             print("""
-            \t=======================
-            \t  GUNAKAN HURUF SAJA
-            \t=======================""")
+            \t=============================
+            \t     GUNAKAN HURUF SAJA
+            \t=============================""")
 
-# Function untuk input department karyawan
+# Function untuk input department tempat karyawan baru bekerja
 def inputDeptKar():
     while True:
-        namaDepartment = input("\tMasukkan Nama Department: ").capitalize()
+        namaDepartment = input("\tMasukkan Nama Department: ")
         x = namaDepartment.isnumeric()
         if x == False:
             x = namaDepartment
             return x
         else:
             print("""
-            \t=======================
-            \t  GUNAKAN HURUF SAJA
-            \t=======================""")
+            \t=============================
+            \t     GUNAKAN HURUF SAJA
+            \t=============================""")
 
 # Function untuk input jabatan karyawan
 def inputJabatanKaryawan():
     while True:
-        jabatanKaryawan = input("\tMasukkan Jabatan Karyawan: ").capitalize()
+        jabatanKaryawan = input("\tMasukkan Jabatan Karyawan: ")
         x = jabatanKaryawan.isnumeric()
         if x == False:
             x = jabatanKaryawan
             return x
         else:
             print("""
-            \t=======================
-            \t  GUNAKAN HURUF SAJA
-            \t=======================""")
+            \t=============================
+            \t     GUNAKAN HURUF SAJA
+            \t=============================""")
 
 
 # Function untuk menambahkan data di menu add data
@@ -223,9 +223,9 @@ def addKaryawan():
     if len(listValue):
         tampilkanData(listValue)
         print("""
-            \t=======================
-            \t     NIK SUDAH ADA
-            \t=======================""")
+            \t=============================
+            \t       DATA SUDAH ADA
+            \t=============================""")
         add()
     else:
         namaKaryawan = inputNamaKaryawan()
@@ -246,7 +246,7 @@ def addKaryawan():
             tampilkanData(listKaryawan)
             print("""
             \t\t=========================
-            \t\t   DATA HAS BEEN SAVED
+            \t\t     DATA TERSIMPAN
             \t\t=========================""")
             add()
         else:
@@ -259,7 +259,7 @@ def addKaryawan():
 # Function untuk Menu Add Data
 def add():
     inputAdd = (input("""
-        Menu Tambah Karyawan Baru PT Pie in the Sky:
+        Menu Tambah Karyawan Baru PT The Eye of The Tiger:
             1. Tambah karyawan baru
             2. Kembali ke menu utama
         
@@ -283,10 +283,10 @@ def updateNamaKaryawan(data):
     if checkUpdate == "yes":
         data[0]["Nama Karyawan"] = gantiNama
         tampilkanData(listKaryawan)
-        print('''
+        print("""
         \t\t==========================
-        \t\t  DATA HAS BEEN UPDATED
-        \t\t==========================''')
+        \t\t      DATA TERUPDATE
+        \t\t==========================""")
         update()
     else:
         update()
@@ -301,10 +301,10 @@ def updateGender(data):
     if checkUpdate == "yes":
         data[0]["Gender"] = genBaru
         tampilkanData(listKaryawan)
-        print('''
+        print("""
         \t\t==========================
-        \t\t  DATA HAS BEEN UPDATED
-        \t\t==========================''')
+        \t\t      DATA TERUPDATE
+        \t\t==========================""")
         update()
     else:
         update()
@@ -319,10 +319,10 @@ def updateDept(data):
     if checkUpdate == "yes":
         data[0]["Department"] = deptBaru
         tampilkanData(listKaryawan)
-        print('''
+        print("""
         \t\t==========================
-        \t\t  DATA HAS BEEN UPDATED
-        \t\t==========================''')
+        \t\t      DATA TERUPDATE
+        \t\t==========================""")
         update()
     else:
         update()
@@ -337,10 +337,10 @@ def updateJabatan(data):
     if checkUpdate == "yes":
         data[0]["Jabatan"] = jabatanBaru
         tampilkanData(listKaryawan)
-        print('''
+        print("""
         \t\t==========================
-        \t\t  DATA HAS BEEN UPDATED
-        \t\t==========================''')
+        \t\t      DATA TERUPDATE
+        \t\t==========================""")
         update()
     else:
         update()
@@ -348,7 +348,7 @@ def updateJabatan(data):
 # Function untuk Menu Update Data
 def update() :
     inputUpdate = (input("""
-        Menu Memperbarui Data Karyawan PT Pie in the Sky:
+        Menu Memperbarui Data Karyawan PT The Eye of The Tiger:
             1. Memperbarui data karyawan
             2. Kembali ke menu utama
         
@@ -405,7 +405,7 @@ def delKaryawan(data, NIKaryawan):
 # Function untuk menu delete data
 def delete():
     inputDelete = (input("""
-        Menu Menghapus Karyawan PT Pie in the Sky:
+        Menu Menghapus Karyawan PT The Eye of The Tiger:
             1. Hapus karyawan
             2. Kembali ke menu utama
         
@@ -456,7 +456,7 @@ def delete():
 def mainMenu():
     while True:
         pilihanMenu = (input("""
-        -------- Selamat Datang di PT Pie in the Sky --------
+        -------- Selamat Datang di PT The Eye of The Tiger --------
 
         Menu Utama:
         1. Database Karyawan Aktif

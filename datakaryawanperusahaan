@@ -1,3 +1,10 @@
+"""""""""
+Sari Amalia
+JCDSML 02
+Project Modul 1 : Programming Fundamental
+"""
+
+
 listKaryawan = [
     {
         "NIK": "100201",
@@ -310,7 +317,7 @@ def updateDept(data):
         print(f'\t{data[i]["NIK"]}\t| {data[i]["Nama Karyawan"]}\t| {data[i]["Gender"]}\t| {deptBaru}\t| {data[i]["Jabatan"]}')
     checkUpdate = input("\n\tUpdate department? (yes/no) : ").lower()
     if checkUpdate == "yes":
-        data[0]['Harga'] = deptBaru
+        data[0]["Department"] = deptBaru
         tampilkanData(listKaryawan)
         print('''
         \t\t==========================
@@ -323,12 +330,12 @@ def updateDept(data):
 #Function untuk Update Jabatan Karyawan
 def updateJabatan(data):
     jabatanBaru = inputJabatanKaryawan()
-    print('\nNomor Data \t| Kode Barang \t| Barang  \t| Stock \t| Harga \t| Warna')
+    print("\n\tNIK \t| Nama Karyawan \t| Gender \t| Department \t| Jabatan ")
     for i in range(len(data)) :
         print(f'\t{data[i]["NIK"]}\t| {data[i]["Nama Karyawan"]}\t| {data[i]["Gender"]}\t| {data[i]["Department"]}\t| {jabatanBaru}')
     checkUpdate = input("\n\tUpdate jabatan? (yes/no) : ").lower()
     if checkUpdate == "yes":
-        data[0]['Warna'] = jabatanBaru
+        data[0]["Jabatan"] = jabatanBaru
         tampilkanData(listKaryawan)
         print('''
         \t\t==========================
@@ -475,4 +482,3 @@ def mainMenu():
             mainMenu()
         
 mainMenu()
-    
